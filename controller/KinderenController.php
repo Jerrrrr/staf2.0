@@ -225,6 +225,9 @@ class KinderenController extends Controller {
 					if(!isset($_POST['actief'])) {
 						$errors['actief'] = 'U hebt niet ingevuld of het kind dit jaar komt naar het speelplein.';
 					}
+					if(!isset($_POST['onPhoto'])) {
+						$errors['onPhoto'] = 'U hebt niet ingevuld of het kind op de foto mag.';
+					}
 					if(empty($_POST['medische'])) {
 						$errors['medische'] = 'U hebt niet ingevuld of het kind dit jaar komt naar het speelplein.';
 					}
@@ -277,7 +280,7 @@ class KinderenController extends Controller {
 		$this->set('kind', $kind);
 
 		if (!empty($_POST)):
-			//var_dump($_POST);
+			var_dump($_POST);
 			if ( isset($_POST["action_update_child"]) && $_POST["action_update_child"] == "Kind Opslaan" ):
 
 				if(empty($_POST['naam'])) {
@@ -294,6 +297,9 @@ class KinderenController extends Controller {
 				}
 				if(!isset($_POST['actief'])) {
 					$errors['actief'] = 'U hebt niet ingevuld of het kind dit jaar komt naar het speelplein.';
+				}
+				if(!isset($_POST['onPhoto'])) {
+					$errors['onPhoto'] = 'U hebt niet ingevuld of het kind op de foto mag.';
 				}
 				if(empty($_POST['medische'])) {
 					$errors['medische'] = 'U hebt niet ingevuld of het kind dit jaar komt naar het speelplein.';
@@ -541,6 +547,7 @@ class KinderenController extends Controller {
 			'medische' => $post['medische'],
 			'notities' => $post['notities'],
 			'actief' => $post['actief'],
+			'onPhoto' => $post['onPhoto'],
 			'registratiedatum' => date("Y-m-d H:i:s")
 		);
 
@@ -584,6 +591,7 @@ class KinderenController extends Controller {
 			'medische' => $post['medische'],
 			'notities' => $post['notities'],
 			'actief' => $post['actief'],
+			'onPhoto' => (int)$post['onPhoto'],
 			'updatedatum' => date("Y-m-d H:i:s")
 		);
 

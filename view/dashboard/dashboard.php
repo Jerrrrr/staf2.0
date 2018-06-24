@@ -142,7 +142,7 @@
             <div class="col-md-6 col-xs-12">
               <div class="x_panel">
                 <div class="x_title">
-                  <h2>Kinderen verboven op foto's</h2>
+                  <h2>Kinderen verboden op foto's</h2>
                   <ul class="nav navbar-right panel_toolbox">
                     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                   </ul>
@@ -152,7 +152,7 @@
                   <br />
                   <span class="error" style="color: #BA383C;"><?php if(!empty($errors)) echo "<p class=\"error\" style=\"color: #BA383C;\">{$errors['reset_check']}</p>";?></span>
                   <p>Hieronder worden alle kinderen gevonden die <b>NIET</b> op een foto mogen staan</p>
-                  <ul>
+                  <ul class="to_do">
                   <?php foreach ( $NoPhotoNames as $key => $value) { ?>
                       <li class="strong-names"  > <?php echo $value['voornaam'].' '. $value['achternaam']  ?></li>    
                   <?php }?>

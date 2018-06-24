@@ -89,6 +89,7 @@
 						<th class="center" >Halve dagen aanwezig</th>
 						<th class="center" >Volle dagen aanwezig</th>
 						<th class="center" >TOTAAL aanwezig</th>
+						<th class="center" >Mag op de Foto</th>
 					</tr>
 					<?php foreach ($aanwezigheden as $aanwezigheid): ?>
 							<tr>
@@ -123,6 +124,7 @@
 									<td class="center" ><?php echo $aanwezigheid['halvedagen_aanwezig']; ?></td>
 									<td class="center" ><?php echo $aanwezigheid['volledagen_aanwezig']; ?></td>
 									<td class="center"><?php echo $aanwezigheid['halvedagen_aanwezig'] / 2 + $aanwezigheid['volledagen_aanwezig']; ?></td>
+									<td class="center" <?php if ($aanwezigheid['onPhoto'] == "Nee"): echo "style=\"color: red;\""; endif; ?>><?php echo $aanwezigheid['onPhoto']; ?></td>
 									<td><input class="hidden" type="submit" /></td>
 								</form>
 							</tr>
