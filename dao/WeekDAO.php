@@ -122,7 +122,6 @@ class WeekDAO extends DAO {
 				    wk.voornaam,
 				    wk.achternaam,
 					wk.actief,
-					CASE wk.onPhoto WHEN 0 THEN 'Nee' WHEN 1 THEN 'Ja' END AS onPhoto,
 				    (SELECT GROUP_CONCAT(dagtype)
 				     	FROM wp_aanwezig
 				     	WHERE kind_id = wk.ID AND dag = :dag AND week = :week1 AND jaar = :jaar1
