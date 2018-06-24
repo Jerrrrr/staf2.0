@@ -1,0 +1,22 @@
+.login_bg{
+	background: #F7F7F7 !important;
+}
+.message{
+	background: #2A3F54;
+
+  	font-size: 2em;
+  	text-align: center;
+}
+.message_error {
+
+  	color: #B04A25;
+}
+.center{
+	text-align: center;
+}
+.message_info{
+  	color: #F0F3FD;
+}
+li {
+ 	list-style: none;
+}

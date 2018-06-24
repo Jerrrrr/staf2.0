@@ -1,0 +1,759 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+*:focus{
+  outline: 0;
+}
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+body {
+  background: #E6A223; 
+  background: url("img/dj_foto.jpg") fixed;
+  background-size: cover;
+  line-height: 1;
+
+  width: 100%;
+  height: 100%;
+  font-size: 62.5%;
+  font-family: 'Avant Garde', Avantgarde, 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+  color: #F0F3FD;
+}
+@media only screen and (max-device-width: 480px) {
+    body {font-size: 50.0%;}
+  }
+.main{
+  width: 960px;
+  margin: 0 auto;
+}
+
+
+
+
+/* ----- Fonts ----- */
+
+@font-face {
+    font-family: 'lobster';
+    src: url('fonts/lobster_1.4-webfont.eot');
+    src: url('fonts/lobster_1.4-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/lobster_1.4-webfont.woff2') format('woff2'),
+         url('fonts/lobster_1.4-webfont.woff') format('woff'),
+         url('fonts/lobster_1.4-webfont.ttf') format('truetype'),
+         url('fonts/lobster_1.4-webfont.svg#lobster_1.4regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+/* ----- Header ----- */
+
+header nav, h1, h4, .mensjes, .dj ul, .flyers h5, footer{ font-family: lobster; }
+header nav {
+  min-width: 960px;
+  width: 100%;
+  background: #000;
+  position: fixed;
+  font-size: 2.4em;
+  padding: 1em 0;
+  margin-top: -3.9em;
+  z-index: 4;
+}
+header nav ul{
+  max-width: 960px;
+}
+header nav li{
+  display: inline;
+  margin-right: 1.8em;
+}
+header nav li:first-child{
+  margin-left: 1em;
+}
+header nav li:last-child{
+  margin-right: 0em;
+}
+header nav .title{
+  font-size: 2em;
+}
+header nav .invisible{
+  display: none;
+}
+a{
+  color: #F0F3FD;
+  text-decoration: none;
+}
+
+  /* ----- Nav Animation ----- */
+  header a:hover{
+    -webkit-animation: lineUp 0.4s ease-in-out;
+    -moz-animation: lineUp 0.4s ease-in-out;
+    -ms-animation: lineUp 0.4s ease-in-out;
+    -o-animation: lineUp 0.4s ease-in-out;
+    animation: lineUp 0.4s ease-in-out;
+    border-bottom: 1px solid white;
+  }
+    @-webkit-keyframes lineUp{
+      from {
+        padding-bottom: 10px;
+        border-bottom: 1px solid rgba(255,255,255,0);
+      }
+      to {
+        padding-bottom: 0px;
+        border-bottom: 1px solid rgba(255,255,255,1);
+      }
+    }
+    @-moz-keyframes lineUp{
+      from {
+        padding-bottom: 10px;
+        border-bottom: 1px solid rgba(255,255,255,0);
+      }
+      to {
+        padding-bottom: 0px;
+        border-bottom: 1px solid rgba(255,255,255,1);
+    }
+    }@-ms-keyframes lineUp{
+      from {
+        padding-bottom: 10px;
+        border-bottom: 1px solid rgba(255,255,255,0);
+      }
+      to {
+        padding-bottom: 0px;
+        border-bottom: 1px solid rgba(255,255,255,1);
+      }
+    }
+    @-o-keyframes lineUp{
+      from {
+        padding-bottom: 10px;
+        border-bottom: 1px solid rgba(255,255,255,0);
+      }
+      to {
+        padding-bottom: 0px;
+        border-bottom: 1px solid rgba(255,255,255,1);
+      }
+    }
+    @keyframes lineUp{
+      from {
+        padding-bottom: 10px;
+        border-bottom: 1px solid rgba(255,255,255,0);
+      }
+      to {
+        padding-bottom: 0px;
+        border-bottom: 1px solid rgba(255,255,255,1);
+      }
+    }
+
+.vlekjes, .mensjes{ margin: 0 auto; }
+.vlekjes{
+  margin-top: 8em;
+  background: url("img/gloheader_bg.jpg") center center;
+  background-size: cover;
+  width: 100%;
+  min-width: 960px;
+  min-height: 960px;
+  height: 100%;
+}
+
+.mensjes{
+  background: url("img/mensjes.png")top center no-repeat;
+  background-size: 100% 100%;
+  min-width: 960px;
+  width: 100%;
+  min-height: 1000px;
+  height: 100%;
+}
+h1{
+  font-size: 16em;
+  float: right;
+  margin-top: 0.4em;
+  margin-right: 5%;
+  -webkit-transform : rotate(10deg);
+  -moz-transform : rotate(10deg);
+  -ms-transform : rotate(10deg);
+  -o-transform : rotate(10deg);
+  transform : rotate(10deg);
+
+  text-shadow: 0 0 5px #000; /* horizontal-offset vertical-offset 'blur' colour */
+  -moz-text-shadow: 0 0 5px #000;
+  -webkit-text-shadow: 0 0 5px #000;
+}
+header div{
+  position: absolute;
+  text-align: center;
+  margin-top: 25%;
+  margin-left: 23%;
+
+  text-shadow: 0 0 2px #000; /* horizontal-offset vertical-offset 'blur' colour */
+  -moz-text-shadow: 0 0 2px #000;
+  -webkit-text-shadow: 0 0 2px #000;
+}
+header .date{
+  font-size: 16em;
+}
+header h2{
+  font-size: 8em;
+  margin-bottom: 0.2em;
+}
+.oco{
+  text-transform: uppercase;
+   margin-bottom: 0.4em;
+   margin-right: 2em;
+}
+header h3{
+  width: 200px;
+  font-size: 2em;
+  margin-left: 10em;
+  margin-top: -4.5em;
+  margin-bottom: 1.4em;
+}
+
+
+
+
+
+/* ----- pages ----- */
+
+h4{
+  text-align: center;
+  font-size: 11em;
+  padding-top: 1.5em;
+  padding-bottom: 1em;
+
+  text-shadow: 0 0 2px #000; /* horizontal-offset vertical-offset 'blur' colour */
+  -moz-text-shadow: 0 0 2px #000;
+  -webkit-text-shadow: 0 0 2px #000;
+}
+.bandjes1 {
+  -webkit-transform: scale(0.75,0.75); 
+  -moz-transform: scale(0.75,0.75); 
+  -ms-transform: scale(0.75,0.75); 
+  -o-transform: scale(0.75,0.75);
+  transform: scale(0.75,0.75);
+}
+
+
+
+  /* ----- Concept ----- */
+
+  .concept {
+    width: 100%;
+    min-width: 960px;
+    margin-top: -1px;
+    background: #000;
+    padding-bottom: 10em;
+  }
+  .concept .bandjes1{
+    background: url("img/concept_bandjes_1.png") no-repeat;
+    width: 112px;
+    height: 138px;
+    margin: -1.07em auto;
+    padding-top: 0.1em;
+    padding-right: 3.5em;
+  }
+  .concept .bandjes2{
+    background: url("img/concept_bandjes_2.png") no-repeat;
+    width: 81px;
+    height: 105px;
+    margin-left: 3.66em;
+    padding-bottom: 1em;
+  }
+  .concept h5 {
+    font-size: 1.4em;
+    font-weight: bolder;
+    text-align: center;
+    padding-bottom: 1em;
+  }
+  .concept p {
+    font-size: 1.2em;
+    line-height: 1.3em;
+    text-align: center;
+    width: 600px;
+    margin: 0 auto;
+    margin-bottom: 6em;
+  }
+  .concept .button{
+    font-size: 1.4em;
+    background: url("img/go_to_fb.png") no-repeat;
+    width: 240px;
+    height: 120px;
+    padding-top: 54px;
+    padding-left: -100px;
+    margin: 0 auto;
+  }
+  .concept .fb{
+    margin-left: -20px;
+    border: 1px solid #F0F3FD;
+    padding: 1em 3em;
+  }
+  .concept .fb:hover{
+    -webkit-animation: glow 0.5s ease-in-out;
+    -moz-animation: glow 0.5s ease-in-out;
+    -ms-animation: glow 0.5s ease-in-out;
+    -o-animation: glow 0.5s ease-in-out;
+    animation: glow 0.5s ease-in-out;
+
+    box-shadow: 0px 0px 40px rgba(136, 136, 136,1);
+
+  }
+   @-webkit-keyframes glow{
+      from {
+        box-shadow: 0px 0px 40px rgba(136, 136, 136,0);
+      }
+      to {
+        box-shadow: 0px 0px 40px rgba(136, 136, 136,1);
+      }
+    }
+    @-moz-keyframes glow{
+      from {
+        box-shadow: 0px 0px 40px rgba(136, 136, 136,0);
+      }
+      to {
+        box-shadow: 0px 0px 40px rgba(136, 136, 136,1);
+      }
+    }
+    @-ms-keyframes glow{
+      from {
+        box-shadow: 0px 0px 40px rgba(136, 136, 136,0);
+      }
+      to {
+        box-shadow: 0px 0px 40px rgba(136, 136, 136,1);
+      }
+    }
+    @-o-keyframes glow{
+      from {
+        box-shadow: 0px 0px 40px rgba(136, 136, 136,0);
+      }
+      to {
+        box-shadow: 0px 0px 40px rgba(136, 136, 136,1);
+      }
+    }  
+    @keyframes glow{
+      from {
+        box-shadow: 0px 0px 40px rgba(136, 136, 136,0);
+      }
+      to {
+        box-shadow: 0px 0px 40px rgba(136, 136, 136,1);
+      }
+    }
+
+
+
+  /* ----- dj ----- */
+  
+  .dj {
+    width: 100%;
+    min-width: 960px;
+    min-height: 800px;
+    padding-bottom: 10em;
+  }
+  .dj .bandjes1{
+    background: url("img/dj_bandjes_1.png") no-repeat;
+    width: 65px;
+    height: 97px;
+    margin: -1.39em auto;
+    padding-right: 1.58em;
+    padding-bottom: 1.5em;
+  }
+  .dj ul{
+    font-size: 5em;
+    text-align: center;
+    margin-bottom: 3em;
+  }
+  .dj ul li{
+    text-shadow: 0 0 2px #000; /* horizontal-offset vertical-offset 'blur' colour */
+    -moz-text-shadow: 0 0 2px #000;
+    -webkit-text-shadow: 0 0 2px #000;
+    margin-bottom: 0.4em;
+  }
+
+
+
+  
+  /* ----- location ----- */
+
+  .location {
+    width: 100%;
+    min-width: 960px;
+    background: #000;
+    padding-bottom: 10em;
+  }
+  .location div {
+    width: 800px;
+    margin:  0 auto;
+  }
+  .location iframe{
+    margin: 0 auto;
+    width: 800px;
+    height: 400px;
+  }
+  .location .bandjes1{
+    background: url("img/location_bandjes_1.png") no-repeat;
+    width: 76px;
+    height: 132px;
+    margin: -1.25em auto;
+    padding-right: 3.57em;
+    padding-top: 0.25em;
+    padding-bottom: 1em;
+  }
+  .location .bandjes2{
+    background: url("img/location_bandjes_2.png") no-repeat;
+    width: 81px;
+    height: 105px;
+    margin-left: 2.16em;
+    padding-top: 0.1em;
+  }
+  .location .bandjes3{
+    background: url("img/location_bandjes_3.png") no-repeat;
+    width: 58px;
+    height: 105px;
+    margin-left: 1.65em;
+  }
+
+
+
+  /* ----- flyers ----- */
+
+  .flyers {
+    width: 100%;
+    min-width: 960px;
+    background: #000;
+    padding-bottom: 10em;
+  }
+  .flyers .bandjes1{
+    background: url("img/flyers_bandjes_1.png") no-repeat;
+    width: 68px;
+    height: 145px;
+    margin: -1.37em auto;
+    padding-right: 2.43em;
+    padding-top: 0.34em;
+    padding-bottom: 1.5em;
+  }
+  .flyers .bandjes2{
+    background: url("img/flyers_bandjes_2.png") no-repeat;
+    width: 77px;
+    height: 107px;
+    margin-left: 1.78em;
+  }
+  .flyers h5{
+    text-align: center;
+    font-size: 4em;
+    margin-top: -1.5em;
+    padding-bottom: 3em;
+  }
+  .flyers h6{
+    font-size: 2.4em;
+    text-align: center;
+  }
+  .flyers h5 span{
+     font-family: 'Avant Garde', Avantgarde, 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+  }
+  .flyers ul{
+    margin-top: 1em;
+    font-size: 2em;
+    line-height: 1.5em;
+    text-align: center;
+    margin-bottom: 8em;
+  }
+
+
+
+
+  /* ----- sponsers ----- */
+
+  .sponsors {
+    background: -webkit-linear-gradient(#F0F3FD 50%, #E6A223 95%);
+    background: -moz-linear-gradient(#F0F3FD 50%, #E6A223 95%);
+    background: -ms-linear-gradient(#F0F3FD 50%, #E6A223 95%);
+    background: -o-linear-gradient(#F0F3FD 50%, #E6A223 95%);
+    background: linear-gradient(#F0F3FD 50%, #E6A223 95%);
+    width: 100%;
+    min-width: 960px;
+  }
+  .sponsors .bandjes1{
+    background: url("img/sponsers_bandjes_1.png") no-repeat;
+    width: 76px;
+    height: 132px;
+    margin: -1.08em auto;
+    padding-right: 3.05em;
+    padding-bottom: 1.5em;
+  }
+  .sponsors .bandjes2{
+    background: url("img/sponsers_bandjes_2.png") no-repeat;
+    width: 60px;
+    height: 101px;
+    margin-left: 3.07em;
+  }
+  .sponsors h4 {
+    color: #000;
+  }
+  .result ul, .sponsors ul {
+    width: 800px;
+    margin: 0 auto;
+  }
+  .result ul li, .sponsors ul li {
+    display: inline;
+    margin-left: 1em;
+  }
+  .result ul li img, .sponsors ul li img{
+    width: 150px;
+    height: 150px;
+  }
+  .sponsors ul li img[class="1"]{
+    width: 150px;
+    height: 150px;
+  }
+  .sponsors ul li img[class="2"]{
+    width: 300px;
+    height: 150px;
+  }
+
+
+
+/* ----- footer ----- */
+
+footer {
+  min-width: 960px;
+  padding: 2em 0;
+  background: #000;
+  text-align: center;
+  font-size: 2em;
+}
+
+
+
+
+
+/* ----- admin ----- */
+
+.account{
+  background: #000;
+   padding-top: 8em;
+  padding-bottom: 8em;
+}
+.box{
+  font-size: 2em;
+  text-align: center;
+}
+.error {
+  color: #B04A25;
+}
+.info{
+  color: #F0F3FD;
+}
+.uploadadmin h2 {
+  text-align: center;
+}
+.inloggen legend h1{
+  text-align: center;
+}
+.inloggen label {
+  font-size: 1.8em;
+  margin-right: 1em;
+}
+.inloggen input {
+  font-size: 1.8em;
+  margin-right: 1em;
+  text-align: center;
+
+  color: #fff;
+  font-size: 1.6em;
+  width: 200px;
+  height: 40px;
+  background: rgba(75,75,75,0.5);
+}
+.inloggen input{
+  webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
+
+  border: none;
+  margin-top: 1em;
+}
+.inloggen input[type="submit"] {
+  color: #fff;
+  float: right;
+  font-size: 1.6em;
+  width: 200px;
+  height: 40px;
+  background: rgba(200,200,200,0.5);
+
+}
+.uploadboxke{
+  width: 200px;
+  margin: 0 auto;
+  padding: 2em 0 14em 0;
+}
+.uploadadmin h5{
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 2em;
+}
+.result {
+  margin-top: 5em;
+}
+
+/* extra */
+.form-submit {
+  cursor: pointer;
+  display: inline-block;
+  margin-left: 10.5em;
+}
+
+.upload-form {
+  position: relative;
+  float: left;
+  display: block;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 5px;
+  border: solid 1px white;
+  text-align: center;
+}
+
+.upload-form .form-group {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  bottom: 10px;
+  right: 10px;
+}
+
+.upload-form .input-group {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.upload-form .form-submit {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  background: #0a0;
+  color: white;
+  border: none;
+  margin: 0;
+  width: 100%;
+}
+.hidden {
+  display: none !important;
+}
+.uploadadmin form{
+  width: 150px;
+  height: 150px;
+}
+.preview-wrapper, .drop-zone {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+.preview-wrapper {
+  z-index: 0;
+}
+.preview-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.form-input-image {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+.has-drag-drop .upload-form .form-input-image, .has-drag-drop .upload-form .form-label {
+  display: none;
+}
+.drop-zone {
+  z-index: 1;
+  background: rgba(0, 0, 0, 0);
+  display: table;
+}
+.drop-zone-inner {
+  pointer-events: none;
+  display: table-cell;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.drop-zone-label {
+  background: black;
+  color: white;
+}
+
+.drag-over .drop-zone-inner {
+  border: solid 5px #0c0;
+}
+
+.loading-indicator-bar {
+  width: 100%;
+  height: 20px;
+}
+
+.loading-indicator-bar-fill {
+  width: 10%;
+  height: 100%;
+  background: #0c0;
+  background-size: 20px 20px;
+  background-image: linear-gradient(45deg, rgba(0, 0, 0, 0.1) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0.1) 75%, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0));
+  -webkit-animation: barberpole 0.5s linear infinite;
+}
+
+@-webkit-keyframes barberpole {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 40px 20px;
+  }
+}
+
+
+
