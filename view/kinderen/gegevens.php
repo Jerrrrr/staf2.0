@@ -54,7 +54,6 @@
 								<th>Geslacht</th>
 								<th>Geboortedatum</th>
 								<th>MEDISCH!</th>
-								<th>Foto</th>
 								<th>Notitie</th>
 								<th>Tel. 1</th>
 								<th>Tel. 2</th>
@@ -99,7 +98,6 @@
 							 	echo '<td nowrap>' . $row['geslacht'] . '</td>
 								<td nowrap>' . $pieces[2]."-".$pieces[1]."-".$pieces[0] . '</td>
 								<td nowrap>' . $row['medische'] . '</td>
-								<td nowrap>' . $row['onPhoto'] . '</td>
 								<td nowrap>' . $row['notities'] . '</td>
 								<td nowrap>' . $row['tel1'] . '</td>
 								<td nowrap>' . $row['tel2'] . '</td>
