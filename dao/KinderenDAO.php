@@ -43,7 +43,7 @@ class KinderenDAO extends DAO {
 	}
 
 	public function selectAllThisYear() {
-		$sql = "SELECT wp_kinderen.ID, wp_kinderen.achternaam, wp_kinderen.voornaam, CASE wp_kinderen.geslacht WHEN 'm' THEN 'jongen' WHEN 'v' THEN 'meisje' END AS geslacht, geboortedatum, alleen_naar_huis, CASE wp_kinderen.onPhoto WHEN 0 THEN 'Nee' WHEN '1' THEN 'Ja' END AS onPhoto, medische, wp_kinderen.actief AS actief, tel1, tel2, wp_ouders.familienaam AS oudernaam , wp_ouders.voornaam as oudervoornaam, email, adres, postcode, stad, notities, kind_id, weken, active, wp_kinderen.registratiedatum, wp_kinderen.updatedatum
+		$sql = "SELECT wp_kinderen.ID, wp_kinderen.achternaam, wp_kinderen.voornaam, CASE wp_kinderen.geslacht WHEN 'm' THEN 'jongen' WHEN 'v' THEN 'meisje' END AS geslacht, geboortedatum, alleen_naar_huis, medische, wp_kinderen.actief AS actief, tel1, tel2, wp_ouders.familienaam AS oudernaam , wp_ouders.voornaam as oudervoornaam, email, adres, postcode, stad, notities, kind_id, weken, active, wp_kinderen.registratiedatum, wp_kinderen.updatedatum
 		FROM wp_kinderen
 		LEFT JOIN wp_ouders ON wp_kinderen.user_id = wp_ouders.user_id
 		LEFT JOIN wp_kinderen_in_weken_aanwezig ON wp_kinderen.ID = wp_kinderen_in_weken_aanwezig.kind_id
@@ -153,8 +153,8 @@ class KinderenDAO extends DAO {
 	public function insert($data) {
 		$errors = $this->getValidationErrors($data);
 		if(empty($errors)) {
-			$sql = "INSERT INTO `wp_kinderen` (`user_id`,`ouder_id`,`voornaam`,`achternaam`,`geslacht`,`geboortedatum`,`alleen_naar_huis`,`medische`,`onPhoto`,`notities`,`actief`,`registratiedatum`,`updatedatum`)
-						VALUES 			      (:user_id, :ouder_id, :voornaam, :achternaam, :geslacht, :geboortedatum, :alleen_naar_huis, :medische, :onPhoto, :notities, :actief, :registratiedatum, :updatedatum)";
+			$sql = "INSERT INTO `wp_kinderen` (`user_id`,`ouder_id`,`voornaam`,`achternaam`,`geslacht`,`geboortedatum`,`alleen_naar_huis`,`medische`,`notities`,`actief`,`registratiedatum`)
+						VALUES 			      (:user_id, :ouder_id, :voornaam, :achternaam, :geslacht, :geboortedatum, :alleen_naar_huis, :medische, :notities, :actief, :registratiedatum)";
 			$stmt = $this->pdo->prepare($sql);
 			$stmt->bindValue(':user_id', $data['user_id']);
 			$stmt->bindValue(':ouder_id', $data['ouder_id']);
@@ -164,11 +164,9 @@ class KinderenDAO extends DAO {
 			$stmt->bindValue(':geboortedatum', $data['geboortedatum']);
 			$stmt->bindValue(':alleen_naar_huis', $data['alleen_naar_huis']);
 			$stmt->bindValue(':medische', $data['medische']);
-			$stmt->bindValue(':onPhoto', $data['onPhoto']);
 			$stmt->bindValue(':notities', $data['notities']);
 			$stmt->bindValue(':actief', $data['actief']);
 			$stmt->bindValue(':registratiedatum', $data['registratiedatum']);
-			$stmt->bindValue(':updatedatum', $data['registratiedatum']);
 			if($stmt->execute()) {
 				$insertedId = $this->pdo->lastInsertId();
 				return $this->selectById($insertedId);
@@ -193,7 +191,6 @@ class KinderenDAO extends DAO {
 									`medische` = :medische,
 									`notities` = :notities,
 									`actief` = :actief,
-									`onPhoto` = :onPhoto,
 									`updatedatum` = :updatedatum
 							WHERE `ID` = :ID" ;
 			$stmt = $this->pdo->prepare($sql);
@@ -206,7 +203,6 @@ class KinderenDAO extends DAO {
 			$stmt->bindValue(':medische', $data['medische']);
 			$stmt->bindValue(':notities', $data['notities']);
 			$stmt->bindValue(':actief', $data['actief']);
-			$stmt->bindValue(':onPhoto', $data['onPhoto']);
 			$stmt->bindValue(':updatedatum', $data['updatedatum']);
 			if($stmt->execute()) {
 				return $this->selectById($data['ID']);

@@ -133,7 +133,6 @@ if (isset($_COOKIE['user_tHg4*t?Vrs@3K6#5J4']) && !empty($_COOKIE['user_tHg4*t?V
                   <li><a><i class="fa fa-users"></i> Staf Leden<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="index.php?page=register">Gebruiker Toevoegen</a></li>
-                      <li><a href="index.php?page=wijzig">Gebruiker Wijzigen</a></li>
                       <li><a href="index.php?page=delete">Gebruiker verwijderen</a></li>
                     </ul>
                   </li>
