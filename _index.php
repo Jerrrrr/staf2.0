@@ -24,10 +24,6 @@ $routes = array(
             'controller' => 'Dashboard',
             'action' => 'register'
             ),
-        'update' => array(
-            'controller' => 'Dashboard',
-            'action' => 'update'
-        ),
         'delete' => array(
             'controller' => 'Dashboard',
             'action' => 'delete'
@@ -94,20 +90,20 @@ $routes = array(
         'uitstap_add_child' => array(
            'controller' => 'Uitstap',
            'action' => 'addChild'
-        )
+        ),
 
-    // 'old_home' => array(
-    //     'controller' => 'Staf',
-    //     'action' => 'index'
-    // ),
-    //     'staf' => array(
-    //         'controller' => 'Staf',
-    //         'action' => 'staf'
-    //     ),
-    //     'add' => array(
-    //         'controller' => 'Staf',
-    //         'action' => 'add'
-    //     )
+    'old_home' => array(
+        'controller' => 'Staf',
+        'action' => 'index'
+    ),
+        'staf' => array(
+            'controller' => 'Staf',
+            'action' => 'staf'
+        ),
+        'add' => array(
+            'controller' => 'Staf',
+            'action' => 'add'
+        )
 
 );
 
