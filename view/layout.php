@@ -202,12 +202,8 @@ if (isset($_COOKIE['user_tHg4*t?Vrs@3K6#5J4']) && !empty($_COOKIE['user_tHg4*t?V
       </div>
     </div>
 
-    <!-- Nog eens nog eens jQuery -->
-    <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
-    <!-- Nog eens jQuery -->
-    <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script> -->
     <!-- jQuery -->
-    <!-- <script src="vendors/jquery/dist/jquery.min.js"></script> -->
+    <script src="vendors/jquery/dist/jquery.min.js"></script>
     <!-- jquery.inputmask -->
     <script src="vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
     <!-- Bootstrap -->
