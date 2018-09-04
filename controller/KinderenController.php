@@ -4,6 +4,7 @@ require_once WWW_ROOT . 'controller' . DS . 'Controller.php';
 
 require_once WWW_ROOT . 'dao' . DS . 'KinderenDAO.php';
 require_once WWW_ROOT . 'dao' . DS . 'OudersDAO.php';
+require_once WWW_ROOT . 'dao' . DS . 'WPDAO.php';
 
 
 class KinderenController extends Controller {
@@ -11,6 +12,7 @@ class KinderenController extends Controller {
 
 	private $kinderenDAO;
 	private $oudersDAO;
+	private $wpDAO;
 
 	//private $selectedParent;
 
@@ -18,6 +20,7 @@ class KinderenController extends Controller {
 
 		$this->kinderenDAO = new KinderenDAO();
 		$this->oudersDAO = new OudersDAO();
+		$this->wpDAO = new WPDAO();
 	}
 
 	public function ouders(){
@@ -65,14 +68,11 @@ class KinderenController extends Controller {
 
 		// Alle kinderen ocherzicht pagina
 
-		// Temp switch for zet active.. 
-		//$kinderen = $this->kinderenDAO->selectAllThisYear();
-		$kinderen = $this->kinderenDAO->selectAll();
+		$kinderen = $this->kinderenDAO->selectAllThisYear();
 
 		if (!empty($_POST["years"]) && isset($_POST["allYear"])):
 			if($_POST["allYear"] == 'on'):
-				$kinderen = $this->kinderenDAO->selectAllThisYear();
-				//$kinderen = $this->kinderenDAO->selectAll();
+				$kinderen = $this->kinderenDAO->selectAll();
 			endif;
 		endif;
 
@@ -177,6 +177,10 @@ class KinderenController extends Controller {
 			if(empty($_POST['tel2'])) {
 				$_POST['tel2'] = $_POST['tel1'];
 			}
+			if(!isset($_POST['ontvanginfo'])) {
+				$errors['ontvanginfo'] = ' Het is wettelijk verplicht specifiek aan te geven of de ouder al dan niet toestemming geeft om zijn/haar e-mail adres te mogen gebruiken. Vergeet dit veld niet in te vullen. Dit bericht vernietigd zichzelf na de eerst volgende verzending van dit formulier. Grietjes, Vicky.';
+			}
+			var_dump($_POST);
 
 			if (empty($errors)) {
 				//print_r(" geslaagd");
@@ -407,7 +411,9 @@ class KinderenController extends Controller {
 		//var_dump($inserted_user);
 		if(!empty($inserted_user)) {
 
-			//var_dump($inserted_user);
+			if ($post["ontvanginfo"] == "n") {
+				$this->wpDAO->update_user_meta($inserted_user["ID"], "wp_capabilities", "a:1:{s:11:\"oudernomail\";b:1;}");
+			}
 
 			if ($post["functie"] == "p") {
 			$post['geslacht'] = "m";
@@ -447,6 +453,8 @@ class KinderenController extends Controller {
 				$errors = $this->oudersDAO->getValidationErrorsParent($ouder);
 				$this->set('errors', $errors);
 			}
+
+
 		} else {
 			$errors = $this->oudersDAO->getValidationErrorsUser($user);
 			$this->set('errors', $errors);
