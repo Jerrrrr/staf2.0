@@ -28,6 +28,10 @@ $routes = array(
             'controller' => 'Dashboard',
             'action' => 'update'
         ),
+        'update_normal' => array(
+            'controller' => 'Dashboard',
+            'action' => 'update_normal'
+        ),
         'delete' => array(
             'controller' => 'Dashboard',
             'action' => 'delete'

@@ -179,7 +179,8 @@ class DashboardController extends Controller {
 			}
 			if(empty($_POST['password'])){
 				$errors['password'] = "please fill in a password";
-
+			} else if (strlen($_POST["password"]) < 12) {
+				$errors['password'] = "Wachtwoord moet minstens 12 karakters lang zijn. Gebruik desnoods een \"passphrase\".";
 			}
 			if($_POST['password'] != $_POST['confirm_password']){
 				$errors['confirm_password'] = "please fill in a matching pass";
@@ -232,6 +233,44 @@ class DashboardController extends Controller {
 			}
 
 
+		}
+	}
+
+	public function update() {
+		$logged_in_user = $this->userDAO->selectByUser($_COOKIE["user_tHg4*t?Vrs@3K6#5J4"]);
+		if ($logged_in_user["role"] == 1) {
+			// GOTO Super User Edit Page
+			$this->redirect("index.php?page=update_super");
+		} else {
+			$this->redirect("index.php?page=update_normal");
+		}
+	}
+
+	public function update_normal() {
+		$logged_in_user = $this->userDAO->selectByUser($_COOKIE["user_tHg4*t?Vrs@3K6#5J4"]);
+		var_dump($logged_in_user);
+		if (!empty($_POST)) {
+			$errors = array();
+			if (empty($_POST["password"]) || !isset($_POST["password"])) {
+				$errors["password"] = "Wachtwoord mag niet leeg zijn.";
+			}
+			if (strlen($_POST["password"]) < 12) {
+				$errors['password'] = "Wachtwoord moet minstens 12 karakters lang zijn. Gebruik desnoods een \"passphrase\".";
+			}
+
+			if (!empty($errors)) {
+				$_SESSION['error'] = "Wachtwoord kon niet gewijzigd worden.";
+				$this->set('errors', $errors);
+			} else {
+				$hasher = new \Phpass\Hash;
+
+				$logged_in_user = $this->userDAO->selectByUser($_COOKIE["user_tHg4*t?Vrs@3K6#5J4"]);
+				$logged_in_user['password'] = $hasher->hashPassword($_POST['password']);
+
+				$this->userDAO->update($logged_in_user["ID"], $logged_in_user);
+				$_SESSION['info'] = "Wachtwoord gewijzigd.";
+				$this->redirect('index.php?page=dashboard');
+			}
 		}
 	}
 
