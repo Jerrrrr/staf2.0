@@ -65,11 +65,14 @@ class KinderenController extends Controller {
 
 		// Alle kinderen ocherzicht pagina
 
-		$kinderen = $this->kinderenDAO->selectAllThisYear();
+		// Temp switch for zet active.. 
+		//$kinderen = $this->kinderenDAO->selectAllThisYear();
+		$kinderen = $this->kinderenDAO->selectAll();
 
 		if (!empty($_POST["years"]) && isset($_POST["allYear"])):
 			if($_POST["allYear"] == 'on'):
-				$kinderen = $this->kinderenDAO->selectAll();
+				$kinderen = $this->kinderenDAO->selectAllThisYear();
+				//$kinderen = $this->kinderenDAO->selectAll();
 			endif;
 		endif;
 

@@ -22,7 +22,7 @@
 					<div class="col-md-9 col-sm-9 col-xs-12">
 						<div class="">
 							<label>
-								<input type="checkbox" class="js-switch" name="allYear" <?php if(isset($_POST['allYear'])): echo 'checked'; endif; ?> /> Toon ingeschreven alle jaren
+								<input type="checkbox" class="js-switch" name="allYear" <?php if(isset($_POST['allYear'])): echo 'checked'; endif; ?> /> Toon ingeschreven dit jaar
 							</label>
 							<input type="submit" name="years"  class="btn btn-round btn-default" value="Go">
 						</div>
