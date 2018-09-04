@@ -61,7 +61,7 @@ class UserDAO extends DAO {
 	public function update($id, $data) {
 		$errors = $this->getValidationErrors($data);
 		if(empty($errors)) {
-			$sql = "UPDATE `wp_staf_users` SET `username` = :username, `password` = :password, `role` = :role WHERE `id` = :id";
+			$sql = "UPDATE `wp_staf_users` SET `username` = :username, `password` = :password, `role` = :role, `updatedatum` = CURDATE() WHERE `id` = :id";
 			$stmt = $this->pdo->prepare($sql);
 			$stmt->bindValue(':username', $data['username']);
 			$stmt->bindValue(':password', $data['password']);

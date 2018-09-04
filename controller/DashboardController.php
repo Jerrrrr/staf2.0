@@ -246,31 +246,97 @@ class DashboardController extends Controller {
 		}
 	}
 
-	public function update_normal() {
+	public function update_super() {
+		$logged_in_user = $this->userDAO->selectByUser($_COOKIE["user_tHg4*t?Vrs@3K6#5J4"]);
+		if ($logged_in_user["role"] != 1) {
+			$_SESSION['error'] = "Only SUPER USERS are allowed on that page.";
+			$this->redirect("index.php?page=dashboard");
+		} else {
+			$this->set('users', $this->userDAO->selectAll());
+		}
+	}
+
+	public function update_user() {
 		$logged_in_user = $this->userDAO->selectByUser($_COOKIE["user_tHg4*t?Vrs@3K6#5J4"]);
 		var_dump($logged_in_user);
-		if (!empty($_POST)) {
+		if ($logged_in_user["role"] != 1) {
+			$_SESSION['error'] = "Only SUPER USERS are allowed on that page.";
+			$this->redirect("index.php?page=dashboard");
+		} else if (empty($_GET["id"]) || !isset($_GET["id"])) {
+			$_SESSION['error'] = "Missing parameter \"user id\".";
+			$this->redirect("index.php?page=dashboard");
+		} else {
+			$user = $this->userDAO->selectById($_GET["id"]);
+			$this->set('user', $user);
+
 			$errors = array();
-			if (empty($_POST["password"]) || !isset($_POST["password"])) {
-				$errors["password"] = "Wachtwoord mag niet leeg zijn.";
-			}
-			if (strlen($_POST["password"]) < 12) {
-				$errors['password'] = "Wachtwoord moet minstens 12 karakters lang zijn. Gebruik desnoods een \"passphrase\".";
-			}
+			if (!empty($_POST) && $_POST["action"] == "Wijzig gebruiker") {
+				if (empty($_POST['naam']) || !isset($_POST['naam'])) {
+					$errors['naam'] = "Naam mag niet leeg zijn.";
+				} else if (strlen($_POST["naam"]) < 2) {
+					$errors["naam"] = "Naam mag niet korter zijn dan 2 karakters.";
+				}
+				if ($_POST["rol"] < 0 || $_POST["rol"] > 1) {
+					$errors["rol"] = "Rol index is out of range.";
+				}
+				if (!empty($_POST["password"]) && isset($_POST["password"])) {
+					if (strlen($_POST["password"]) < 12) {
+						$errors['password'] = "Wachtwoord moet minstens 12 karakters lang zijn. Gebruik desnoods een \"passphrase\".";
+					} else if ($_POST["confirmpassword"] != $_POST['password']) {
+						$errors['confirmpassword'] = "Wachtwoorden komen niet overeen.";
+					}
+				}
 
-			if (!empty($errors)) {
-				$_SESSION['error'] = "Wachtwoord kon niet gewijzigd worden.";
-				$this->set('errors', $errors);
-			} else {
-				$hasher = new \Phpass\Hash;
+				if (empty($errors)) {
+					$hasher = new \Phpass\Hash;
 
-				$logged_in_user = $this->userDAO->selectByUser($_COOKIE["user_tHg4*t?Vrs@3K6#5J4"]);
-				$logged_in_user['password'] = $hasher->hashPassword($_POST['password']);
+					$user["username"] = $_POST["naam"];
+					if (!empty($_POST["password"]) && isset($_POST["password"])) {
+						$user["password"] = $hasher->hashPassword($_POST['password']);
+					}
+					$user["role"] = $_POST["rol"];
 
-				$this->userDAO->update($logged_in_user["ID"], $logged_in_user);
-				$_SESSION['info'] = "Wachtwoord gewijzigd.";
-				$this->redirect('index.php?page=dashboard');
+					$this->userDAO->update($user["ID"], $user);
+					$_SESSION['info'] = "Gebruiker gewijzigd.";
+					$this->redirect('index.php?page=dashboard');
+				} else {
+					$_SESSION['error'] = "Could not update user.";
+					$this->set('errors', $errors);
+				}
 			}
+		}
+	}
+
+	public function update_normal() {
+		$logged_in_user = $this->userDAO->selectByUser($_COOKIE["user_tHg4*t?Vrs@3K6#5J4"]);
+		if ($logged_in_user["role"] != 0) {
+			if (!empty($_POST)) {
+				$errors = array();
+				if (empty($_POST["password"]) || !isset($_POST["password"])) {
+					$errors["password"] = "Wachtwoord mag niet leeg zijn.";
+				} else if (strlen($_POST["password"]) < 12) {
+					$errors['password'] = "Wachtwoord moet minstens 12 karakters lang zijn. Gebruik desnoods een \"passphrase\".";
+				} else if ($_POST["confirmpassword"] != $_POST['password']) {
+					$errors['confirmpassword'] = "Wachtwoorden komen niet overeen.";
+				}
+
+				if (!empty($errors)) {
+					$_SESSION['error'] = "Wachtwoord kon niet gewijzigd worden.";
+					$this->set('errors', $errors);
+				} else {
+					$hasher = new \Phpass\Hash;
+
+					$logged_in_user = $this->userDAO->selectByUser($_COOKIE["user_tHg4*t?Vrs@3K6#5J4"]);
+					$logged_in_user['password'] = $hasher->hashPassword($_POST['password']);
+
+					$this->userDAO->update($logged_in_user["ID"], $logged_in_user);
+					$_SESSION['info'] = "Wachtwoord gewijzigd.";
+					$this->redirect('index.php?page=dashboard');
+				}
+			}
+		} else {
+			$_SESSION['error'] = "You have the incorrect role to enter this page.";
+			$this->redirect('index.php?page=dashboard');
 		}
 	}
 
